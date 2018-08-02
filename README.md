@@ -25,7 +25,7 @@ toy-server creates each time you use it a `dir.html` page, so if you care about 
 
 `python run.py foo bar/`
 
-Then open `0.0.0.0:8000`.
+Then open `0.0.0.0:8000`
 
 ## Informations**
 
