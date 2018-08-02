@@ -9,7 +9,7 @@ Made with no extra crates, why does it matter you ask? less compile time ;)
 
 Share current directory through http or specify names of files and directories to share.
 
-## what does it look like
+## What does it look like?
 <img src="./screenshot.png" width="80%" height="80%">
 
 
