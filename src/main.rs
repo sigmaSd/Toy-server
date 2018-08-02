@@ -89,14 +89,3 @@ fn check_request(b: &[u8; 512]) -> String {
     s.replace_range(http_offset.., "");
     s
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn dir() {
-        let f = fs::read_dir("./test/").unwrap();
-        println!("{:?}", read_to_str(f));
-    }
-}
