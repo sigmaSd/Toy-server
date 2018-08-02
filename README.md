@@ -27,7 +27,7 @@ toy-server creates each time you use it a `dir_toy_server.html` page, so if you 
 
 Then open `0.0.0.0:8000`
 
-## Informations**
+## Informations
 
 **1-** if you share specific files/folders the paths have to be relative. 
 
@@ -43,3 +43,5 @@ example: `current_dir = /$HOME/toy `
 *Error:* `python run.py /home/$HOME/toy/foo /home/$HOME/toy/bar/foo`
 
 **2-** this program dosen't consider security at all so use it only on trusted LAN.
+
+**3-** Its a **Toy!**
