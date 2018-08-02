@@ -15,7 +15,7 @@ Share current directory through http or specify names of files and directories t
 
 ## Usage
 
-toy-server creates each time you use it a `dir.html` page, so if you care about not beign invaded by its clones everywhere you should use the python wrapper which will clean after usage.
+toy-server creates each time you use it a `dir_toy_server.html` page, so if you care about not beign invaded by its clones everywhere you should use the python wrapper which will clean after usage.
 
 **share current dir**
 

@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 
 crate fn append_dir(l: &[String], root: bool) {
-    let mut html = File::create("dir.html").unwrap();
+    let mut html = File::create("dir_toy_server.html").unwrap();
     let mut content = String::new();
 
     content.push_str("<!DOCTYPE HTML>\n");
@@ -14,6 +14,9 @@ crate fn append_dir(l: &[String], root: bool) {
     }
 
     for link in l {
+        if link.contains("dir_toy_server.html") {
+            continue
+        }
         let mut name = link.clone();
         if name.ends_with('/') {
             name.pop();
