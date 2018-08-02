@@ -21,9 +21,7 @@ fn main() {
     for stream in listner.incoming() {
         let stream = stream.unwrap();
         let args = args.clone();
-        /* pool.execute(move || {
-            handle_connection(stream, &args);
-        }); */
+
         thread::spawn(move || {
             handle_connection(stream, &args);
         });
