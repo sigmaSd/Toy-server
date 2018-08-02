@@ -45,3 +45,8 @@ example: `current_dir = /$HOME/toy `
 **2-** this program dosen't consider security at all so use it only on trusted LAN.
 
 **3-** Its a **Toy!**
+
+# Credits
+
+Made on top of 
+[https://doc.rust-lang.org/book/second-edition/ch20-00-final-project-a-web-server.html](https://doc.rust-lang.org/book/second-edition/ch20-00-final-project-a-web-server.html) 
