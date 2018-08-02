@@ -25,6 +25,8 @@ toy-server creates each time you use it a `dir.html` page, so if you care about 
 
 `python run.py foo bar/`
 
+THen open `0.0.0.0:8000` on your browser.
+
 ## Informations**
 
 **1-** if you share specific files/folders the paths have to be relative. 
