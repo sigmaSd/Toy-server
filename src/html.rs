@@ -47,7 +47,7 @@ fn get_parent(s: Option<&String>) -> String {
                     s.replace_range(idx.., "");
                     s.insert(0, '/');
                 }
-                None => s = ".".to_string(),
+                None => s = "/".to_string(),
             }
             s
         }
