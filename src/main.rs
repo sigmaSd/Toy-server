@@ -12,6 +12,8 @@ use std::path::Path;
 use std::str;
 use std::thread;
 
+const FAV: &[u8; 318] = include_bytes!("favicon.ico");
+
 fn main() {
     let listner = TcpListener::bind("0.0.0.0:8000").unwrap();
 
@@ -53,8 +55,12 @@ fn handle_connection(mut stream: TcpStream, args: &[String]) {
                 append_dir(&args, true);
             }
 
-            let mut file = File::open("dir.html").unwrap();
+            let mut file = File::open("dir_toy_server.html").unwrap();
             file.read_to_string(&mut contents).unwrap();
+            status = String::from("HTTP/1.1 200 OK\r\n\r\n");
+        }
+        "/favicon.ico" => {
+            contents = String::from_utf8_lossy(FAV).to_string();
             status = String::from("HTTP/1.1 200 OK\r\n\r\n");
         }
         x => {
@@ -62,7 +68,7 @@ fn handle_connection(mut stream: TcpStream, args: &[String]) {
             if path.is_dir() {
                 let paths = read_to_str(path);
                 append_dir(&paths, false);
-                let mut file = File::open("dir.html").unwrap();
+                let mut file = File::open("dir_toy_server.html").unwrap();
                 file.read_to_string(&mut contents).unwrap();
                 status = String::from("HTTP/1.1 200 OK\r\n\r\n");
             } else {
