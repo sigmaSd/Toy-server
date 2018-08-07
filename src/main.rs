@@ -64,6 +64,9 @@ fn handle_connection(mut stream: TcpStream, args: &[String]) {
             status = String::from("HTTP/1.1 200 OK\r\n\r\n");
         }
         x => {
+            // escape space (%20 in browser)
+            let x = x.replace("%20", " ");
+            
             let path = Path::new(&x[1..]);
             if path.is_dir() {
                 let paths = read_to_str(path);
