@@ -42,7 +42,7 @@ fn handle_connection(mut stream: TcpStream, args: &[String]) {
 
     let _ = stream.read(&mut buffer).unwrap();
 
-    let mut contents = String::new();
+    let mut contents = Vec::new();
     let status;
 
     match check_request(&buffer).as_str() {
@@ -56,11 +56,11 @@ fn handle_connection(mut stream: TcpStream, args: &[String]) {
             }
 
             let mut file = File::open("dir_toy_server.html").unwrap();
-            file.read_to_string(&mut contents).unwrap();
+            file.read_to_end(&mut contents).unwrap();
             status = String::from("HTTP/1.1 200 OK\r\n\r\n");
         }
         "/favicon.ico" => {
-            contents = String::from_utf8_lossy(FAV).to_string();
+            contents = FAV.to_vec();
             status = String::from("HTTP/1.1 200 OK\r\n\r\n");
         }
         x => {
@@ -69,18 +69,19 @@ fn handle_connection(mut stream: TcpStream, args: &[String]) {
                 let paths = read_to_str(path);
                 append_dir(&paths, false);
                 let mut file = File::open("dir_toy_server.html").unwrap();
-                file.read_to_string(&mut contents).unwrap();
+                file.read_to_end(&mut contents).unwrap();
                 status = String::from("HTTP/1.1 200 OK\r\n\r\n");
             } else {
                 let mut file = File::open(path).unwrap();
-                file.read_to_string(&mut contents).unwrap();
+                file.read_to_end(&mut contents).unwrap();
                 status = String::from("HTTP/1.1 200 OK\r\n\r\n");
             }
         }
     }
 
-    let response = format!("{}{}", status, contents);
-    stream.write_all(response.as_bytes()).unwrap();
+    let mut response = status.as_bytes().to_vec();
+    response.extend(contents);
+    stream.write_all(&response).unwrap();
     stream.flush().unwrap();
 }
 
